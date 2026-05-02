@@ -6,6 +6,12 @@ import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { Program, AnchorProvider, web3 } from "@coral-xyz/anchor";
 import type { Lumina } from "../lumina"; 
 import idl from "../lumina.json"; 
+import dynamic from "next/dynamic";
+
+const WalletMultiButtonDynamic = dynamic(
+  async () => (await import("@solana/wallet-adapter-react-ui")).WalletMultiButton,
+  { ssr: false }
+);
 
 export default function Dashboard() {
   // 1. ALL HOOKS MUST BE INSIDE THIS FUNCTION
@@ -113,7 +119,10 @@ export default function Dashboard() {
           </span>
         </div>
         <div className="flex items-center">
-          <WalletMultiButton />
+          <div className="flex items-center">
+
+          <WalletMultiButtonDynamic /> 
+        </div>
         </div>
       </nav>
 
