@@ -12,8 +12,8 @@ import "@solana/wallet-adapter-react-ui/styles.css";
 export default function AppWalletProvider({ children }: { children: React.ReactNode }) {
   // Use the devnet cluster for testing
   const network = WalletAdapterNetwork.Devnet;
-  const endpoint = "http://127.0.0.1:8899"; // <-- Changed this line to localhost
-  //const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+  //const endpoint = "http://127.0.0.1:8899"; // <-- When using localhost for testing.
+  const endpoint = useMemo(() => clusterApiUrl(network), [network]);
   const wallets = useMemo(() => [], [network]);
 
   return (
