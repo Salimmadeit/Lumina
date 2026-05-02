@@ -215,7 +215,21 @@ export default function Dashboard() {
               </span>
             </button>
             {txHash && (
-               <p className="text-[#deed2e] font-mono text-xs mt-2">Latest TX: {txHash.slice(0, 4)}...{txHash.slice(-4)}</p>
+              <div className="mt-6 p-4 bg-black/40 border border-[#deed2e]/30 rounded-lg backdrop-blur-sm flex flex-col items-center gap-2 w-full max-w-md animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div className="flex items-center gap-2 text-[#deed2e]">
+                  <span className="material-symbols-outlined text-sm">verified</span>
+                  <span className="font-label-caps tracking-widest text-xs uppercase">Transaction Confirmed</span>
+                </div>
+                {/* Automatically links to the Devnet Explorer */}
+                <a 
+                  href={`https://explorer.solana.com/tx/${txHash}?cluster=devnet`} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="text-white font-mono text-[10px] sm:text-xs hover:text-[#deed2e] transition-colors break-all text-center underline decoration-white/30 underline-offset-4"
+                >
+                  {txHash}
+                </a>
+              </div>
             )}
           </div>
         </div>
